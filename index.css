@@ -90,3 +90,16 @@ h1 {
     color: #123
     border: 1px solid #d5d5d5;
 }
+
+/* Filter row */
+.filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.filter-row select {
+    min-width: 160px;
+}
+
