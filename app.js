@@ -114,3 +114,104 @@ function removeTask(taskId) {
 
 //* --- Filtering & Rendering --- *//
 
+function getFilteredTasks() {
+  const category = filterCategory.value;
+  const status = filterStatus.value;
+
+  return tasks.filter(task => {
+    const matchCategory = (category === "All" || task.category === category);
+    const matchStatus = (status === "All" || (status === "Overdue" ? task.status === "Overdue" : task.status === status));
+    return matchCategory && matchStatus;
+  });
+}
+
+function renderTasks() {
+  // Update overdue statuses first
+  updateOverdueStatuses();
+
+  // Choose tasks to display based on filters
+  const toDisplay = getFilteredTasks();
+
+  // Clear container
+  taskListContainer.innerHTML = "";
+
+  if (!toDisplay.length) {
+    noTasksMessage.style.display = "block";
+    return;
+  } else {
+    noTasksMessage.style.display = "none";
+  }
+
+  toDisplay.forEach(task => {
+    const taskEl = document.createElement("div");
+    taskEl.className = "task-item";
+
+    // Title / name
+    const title = document.createElement("div");
+    title.className = "task-title";
+    title.textContent = task.name;
+
+    // Category
+    const category = document.createElement("div");
+    category.className = "task-category";
+    category.textContent = task.category;
+
+    // Deadline
+    const deadline = document.createElement("div");
+    deadline.className = "task-deadline";
+    deadline.textContent = displayDate(task.deadline);
+
+    // Status (visual pill + dropdown to change)
+    const statusWrap = document.createElement("div");
+    statusWrap.className = "task-status";
+    const statusPill = document.createElement("span");
+    statusPill.className = "status-pill";
+    statusPill.textContent = task.status;
+    if (task.status === "In Progress") statusPill.classList.add("status-inprogress");
+    else if (task.status === "Completed") statusPill.classList.add("status-completed");
+    else if (task.status === "Overdue") statusPill.classList.add("status-overdue");
+
+    // status selector
+    const select = document.createElement("select");
+    select.className = "small-select";
+    ["In Progress", "Completed", "Overdue"].forEach(s => {
+      const opt = document.createElement("option");
+      opt.value = s;
+      opt.textContent = s;
+      if (s === task.status) opt.selected = true;
+      select.appendChild(opt);
+    });
+
+    select.addEventListener("change", (e) => {
+      updateTaskStatus(task.id, e.target.value);
+    });
+
+    statusWrap.appendChild(statusPill);
+    statusWrap.appendChild(select);
+
+    // Controls (delete)
+    const controls = document.createElement("div");
+    controls.style.display = "flex";
+    controls.style.gap = "8px";
+    // Delete button
+    const delBtn = document.createElement("button");
+    delBtn.className = "small-btn";
+    delBtn.textContent = "Delete";
+    delBtn.addEventListener("click", () => {
+      if (confirm(`Delete "${task.name}"?`)) removeTask(task.id);
+    });
+
+    controls.appendChild(delBtn);
+
+    // Compose grid
+    taskEl.appendChild(title);
+    taskEl.appendChild(category);
+    taskEl.appendChild(deadline);
+    taskEl.appendChild(statusWrap);
+    taskEl.appendChild(controls);
+
+    taskListContainer.appendChild(taskEl);
+  });
+}
+
+/* Populate category dropdown.
