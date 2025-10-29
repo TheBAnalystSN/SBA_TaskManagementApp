@@ -69,3 +69,48 @@ function updateOverdueStatuses() {
     }
   });
 }
+
+// Add new task array //
+function addTask({ name, category, deadline, status }) {
+  // Basic validation
+  if (!name || !category || !deadline) {
+    alert("Please provide a name, category, and deadline.");
+    return;
+  }
+
+  // Build object
+  const newTask = {
+    id: generateId(),
+    name: String(name).trim(),
+    category: String(category).trim(),
+    deadline: String(deadline),
+    status: status || "In Progress",
+  };
+
+  tasks.push(newTask);
+  updateOverdueStatuses();
+  saveTasksToStorage();
+  renderTasks();
+  populateCategoryFilter();
+}
+
+// Update Status for single task //
+function updateTaskStatus(taskId, newStatus) {
+  const idx = tasks.findIndex(t => t.id === taskId);
+  if (idx === -1) return;
+  tasks[idx].status = newStatus;
+  updateOverdueStatuses();
+  saveTasksToStorage();
+  renderTasks();
+}
+
+// Remove task by id //
+function removeTask(taskId) {
+  tasks = tasks.filter(t => t.id !== taskId);
+  saveTasksToStorage();
+  renderTasks();
+  populateCategoryFilter();
+}
+
+//* --- Filtering & Rendering --- *//
+
