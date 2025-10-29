@@ -140,3 +140,18 @@ h1 {
     gap: 8px;
     align-items: center;
 }
+
+/* Status colors */
+.status-pill {
+    padding: 6px 8px;
+    border-radius: 16px;
+    font-size: 0.85rem;
+    color: #fff;
+    font-weight: 700;
+}
+
+.status-inprogress { background: #010101; }
+.status-completed { background: #16a341; }
+.status-overdue { background: #e11d48; }
+
+/* small button in list */
