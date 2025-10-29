@@ -13,6 +13,81 @@
             <h1>Task Management App</h1>
             <p class="subtitle">Add, update, filter, and persist tasks</p>
         </header>
-    
+
+        <main>
+
+            <!-- Task Form -->
+             
+            <section class="card" id="addTaskSection">
+                <h2>Add New Task</h2>
+                <form id="taskForm">
+                    <div class="form-row">
+                        <label for="taskName">Task Name</label>
+                       <input id="taskName" name="taskName" type="text" placeholder="e.g. Prepare report" required />
+          </div>
+
+          <div class="form-row">
+            <label for="taskCategory">Category</label>
+            <input id="taskCategory" name="taskCategory" type="text" placeholder="e.g. Work, Home, School" required />
+          </div>
+
+          <div class="form-row">
+            <label for="taskDeadline">Deadline</label>
+            <input id="taskDeadline" name="taskDeadline" type="date" required />
+          </div>
+
+          <div class="form-row">
+            <label for="taskStatus">Initial Status</label>
+            <select id="taskStatus" name="taskStatus">
+              <option value="In Progress">In Progress</option>
+              <option value="Completed">Completed</option>
+            </select>
+          </div>
+
+          <div class="form-row actions">
+            <button type="submit" id="addTaskBtn" class="btn">Add Task</button>
+            <button type="button" id="clearAllBtn" class="btn btn-secondary">Clear All Tasks</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Filters -->
+      <section class="card" id="filtersSection">
+        <h2>Filters</h2>
+        <div class="filter-row">
+          <label for="filterCategory">Category</label>
+          <select id="filterCategory">
+            <option value="All">All</option>
+          </select>
+
+          <label for="filterStatus">Status</label>
+          <select id="filterStatus">
+            <option value="All">All</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+            <option value="Overdue">Overdue</option>
+          </select>
+
+          <button id="applyFilterBtn" class="btn">Apply</button>
+          <button id="resetFilterBtn" class="btn btn-secondary">Reset</button>
+        </div>
+      </section>
+
+      <!-- Task List -->
+      <section class="card" id="taskListSection">
+        <h2>Task List</h2>
+        <div id="taskListContainer">
+          <!-- Tasks will be rendered here -->
+        </div>
+        <p id="noTasksMessage" class="muted">No tasks yet. Add one above to get started.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Submitted by Dustin Robertson</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>
