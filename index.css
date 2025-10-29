@@ -151,8 +151,8 @@ h1 {
 }
 
 .status-inprogress { background: #010101; }
-.status-completed { background: #16a341; }
-.status-overdue { background: #e11d48; }
+.status-completed { background: #181083; }
+.status-overdue { background: #037536; }
 
 /* small button in list */
 .small-btn {
@@ -161,4 +161,16 @@ h1 {
     padding: 6px 8px;
     border-radius: 6px;
     cursor: pointer;
+}
+
+/* :muted text */
+.muted {color: #647464; margin-top: 12px; }
+
+/* Responsive */
+@media (max-width: 720px) {
+    .task-item {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+    .task-item > * { width: 100%; }
 }
