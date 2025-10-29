@@ -30,3 +30,42 @@ function displayDate(dateStr) {
   if (isNaN(d)) return "Invalid date";
   return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "2-digit" });
 }
+
+/* --- Local Storate ---*/
+function saveTasksToStorage() {
+    try {
+        localStorage.setItem(STORAGE_KEY, JSON, Stringify(tasks));
+    } catch (err) { 
+        console.error("Failed to save tasks:",err);
+    }
+}
+
+function loadTasksFromStorage() {
+    try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        // Make sure array and objectgs have expected props //
+        if (Array.isArray(parsed)) return parsed; return [];
+    } catch (err) {
+        console.error("Failed to load tasks:", err);
+        return [];
+    }
+}
+
+// Deadlines and Overdue tasks section //
+function updateOverdueStatuses() {
+  const today = new Date();
+  tasks.forEach(task => {
+    // Only mark Overdue if not Completed
+    if (task.status !== "Completed") {
+      const deadline = parseDateEndOfDay(task.deadline);
+      if (deadline < today) {
+        task.status = "Overdue";
+      } else {
+        // If previously overdue but now before deadline, set to In Progress (or keep given status)
+        if (task.status === "Overdue") task.status = "In Progress";
+      }
+    }
+  });
+}
