@@ -41,3 +41,34 @@ h1 {
     border: 1px solid #efeef6;
 }
 
+/* Form */
+.form-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.form-row label {
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+    color: #354935;
+}
+
+.form-row input[type="text"],
+.form-row input[type="date"],
+.form-row select {
+    padding: 8px 10px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #cfe2fc;
+}
+
+.form-row .action {
+    display: flex;
+    gap: 10px;
+}
+
+.form-row .action {
+    display: flex;
+    gap: 10px;
+}
