@@ -17,3 +17,16 @@ const clearAllBtn = document.getElementByID("clearAllBtn");
 function generated() {
     return "t_" + Date.now() + "_" + Math.floor(Math.random() * 1000);
 }
+
+// Date string //
+function paresDateEndofDay(dateStr) {
+    const d = new Date(dateStr + "T23:59:59");
+    return new Date(d.getTime());
+}
+
+// Format date //
+function displayDate(dateStr) {
+  const d = new Date(dateStr);
+  if (isNaN(d)) return "Invalid date";
+  return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "2-digit" });
+}
