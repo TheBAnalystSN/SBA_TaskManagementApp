@@ -103,3 +103,40 @@ h1 {
     min-width: 160px;
 }
 
+/* Task List 8/
+#taskListContainer {
+    margin-top: 12px;
+}
+
+.task-item {
+    display: grid;
+    grid-template-columns: 1fr 110px 110px 120px 80px;
+    gap: 8px;
+    align-items: center;
+    padding: 10px;
+    border-radius: 6px;
+    background: #f7fbff;
+    margin-bottom: 8px;
+    border: 1px solid #e7f1fb;
+}
+
+.task-title {
+    font-weight: 600;
+    color: #052b4f;
+}
+
+.task-category {
+    font-size: 0.9rem;
+    color: #3c5b74;
+}
+
+.task-deadline {
+    font-size: 0.9rem;
+    color: #4a4a4a;
+}
+
+.task-status {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
