@@ -155,3 +155,10 @@ h1 {
 .status-overdue { background: #e11d48; }
 
 /* small button in list */
+.small-btn {
+    background: #fff;
+    border: 1px solid #cfe2fc;
+    padding: 6px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+}
