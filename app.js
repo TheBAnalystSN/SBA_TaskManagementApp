@@ -215,3 +215,70 @@ function renderTasks() {
 }
 
 /* Populate category dropdown.
+function populateCategoryFilter() {
+  const categories = Array.from(new Set(tasks.map(t => t.category))).sort();
+  // Clear existing but keep "All"
+  filterCategory.innerHTML = "";
+  const all = document.createElement("option");
+  all.value = "All";
+  all.textContent = "All";
+  filterCategory.appendChild(all);
+
+  categories.forEach(cat => {
+    const opt = document.createElement("option");
+    opt.value = cat;
+    opt.textContent = cat;
+    filterCategory.appendChild(opt);
+  });
+}
+
+/* ---------- Event Listeners ---------- */
+
+// Submit form to add task
+taskForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const name = document.getElementById("taskName").value.trim();
+  const category = document.getElementById("taskCategory").value.trim();
+  const deadline = document.getElementById("taskDeadline").value;
+  const status = document.getElementById("taskStatus").value;
+
+  addTask({ name, category, deadline, status });
+
+  // reset form
+  taskForm.reset();
+});
+
+// Apply filter
+applyFilterBtn.addEventListener("click", () => {
+  renderTasks();
+});
+
+// Reset filters
+resetFilterBtn.addEventListener("click", () => {
+  filterCategory.value = "All";
+  filterStatus.value = "All";
+  renderTasks();
+});
+
+// Clear All tasks
+clearAllBtn.addEventListener("click", () => {
+  if (!tasks.length) return alert("No tasks to clear.");
+  if (confirm("Clear ALL tasks? This cannot be undone.")) {
+    tasks = [];
+    saveTasksToStorage();
+    renderTasks();
+    populateCategoryFilter();
+  }
+});
+
+/* ---------- App Initialization ---------- */
+
+function initApp() {
+  tasks = loadTasksFromStorage();
+  updateOverdueStatuses();
+  populateCategoryFilter();
+  renderTasks();
+}
+
+// Run
+initApp();
