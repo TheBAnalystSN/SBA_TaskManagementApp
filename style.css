@@ -23,7 +23,7 @@ header {
 }
 
 h1 {
-  color: #064e8d;
+  color: #05493e;
   margin-bottom: 6px;
 }
 .subtitle {
@@ -70,7 +70,7 @@ h1 {
 
 /* Buttons */
 .btn {
-  background: #0666b0;
+  background: #03643f;
   color: #fff;
   border: none;
   padding: 8px 12px;
@@ -117,7 +117,7 @@ h1 {
 
 .task-title {
   font-weight: 600;
-  color: #052b4f;
+  color: #054f33;
 }
 
 .task-category {
