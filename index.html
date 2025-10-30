@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Management App</title>
-    <link rel="=stylesheet" href="index.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Task Management App - SBA</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-    <div class="container">
-        <header>
-            <h1>Task Management App</h1>
-            <p class="subtitle">Add, update, filter, and persist tasks</p>
-        </header>
+  <div class="container">
+    <header>
+      <h1>Task Management App</h1>
+      <p class="subtitle">Add, update, filter, and persist tasks (SBA submission)</p>
+    </header>
 
-        <main>
-
-            <!-- Task Form -->
-            <section class="card" id="addTaskSection">
-                <h2>Add New Task</h2>
-                <form id="taskForm">
-                    <div class="form-row">
-                        <label for="taskName">Task Name</label>
-                       <input id="taskName" name="taskName" type="text" placeholder="e.g. Prepare report" required />
+    <main>
+      <!-- Add Task Form -->
+      <section class="card" id="addTaskSection">
+        <h2>Add New Task</h2>
+        <form id="taskForm">
+          <div class="form-row">
+            <label for="taskName">Task Name</label>
+            <input id="taskName" name="taskName" type="text" placeholder="e.g. Prepare report" required />
           </div>
 
           <div class="form-row">
@@ -76,7 +74,6 @@
       <section class="card" id="taskListSection">
         <h2>Task List</h2>
         <div id="taskListContainer">
-
           <!-- Tasks will be rendered here -->
         </div>
         <p id="noTasksMessage" class="muted">No tasks yet. Add one above to get started.</p>
